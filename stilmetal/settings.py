@@ -19,6 +19,8 @@ import oscar
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
+location = lambda x: os.path.join(
+    os.path.dirname(os.path.realpath(__file__)), x)
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.9/howto/deployment/checklist/
@@ -95,11 +97,24 @@ TEMPLATES = [
     },
 ]
 
+
 WSGI_APPLICATION = 'stilmetal.wsgi.application'
 
 #fix checkout
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+#
+STATIC_URL = 'static/'
+STATIC_ROOT = location('static')
+MEDIA_URL = '/media/'
+MEDIA_ROOT = location('media')
+THUMBNAIL_DEBUG = True
+THUMBNAIL_KEY_PREFIX = 'stilmetal'
+
+
+
+
+
 
 # Database
 # https://docs.djangoproject.com/en/1.9/ref/settings/#databases
@@ -126,7 +141,7 @@ OSCAR_ORDER_STATUS_PIPELINE = {
 PAYMENTEXPRESS_POST_URL = 'https://sec.paymentexpress.com/pxpost.aspx'
 PAYMENTEXPRESS_USERNAME = '…'
 PAYMENTEXPRESS_PASSWORD = '…'
-PAYMENTEXPRESS_CURRENCY = 'AUD'
+PAYMENTEXPRESS_CURRENCY = 'EUR'
 
 PAYPAL_API_USERNAME = 'test_xxxx.gmail.com'
 PAYPAL_API_PASSWORD = '123456789'
@@ -169,7 +184,7 @@ HAYSTACK_CONNECTIONS = {
 # Internationalization
 # https://docs.djangoproject.com/en/1.9/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'it-IT'
 
 TIME_ZONE = 'UTC'
 
